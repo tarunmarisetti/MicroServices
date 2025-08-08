@@ -10,9 +10,6 @@ All services are registered with **Eureka Service Registry**, and requests are r
 
 ---
 
-
----
-
 ## 🧩 Features
 
 - **Spring Boot Microservices**: Employee, Department, Organization
