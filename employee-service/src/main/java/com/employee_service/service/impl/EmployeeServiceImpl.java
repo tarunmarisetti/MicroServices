@@ -5,6 +5,7 @@ import com.employee_service.dto.DepartmentDto;
 import com.employee_service.dto.EmployeeDto;
 import com.employee_service.dto.OrganizationDto;
 import com.employee_service.entity.Employee;
+import com.employee_service.exceptions.ResourceNotFoundException;
 import com.employee_service.repository.EmployeeRepository;
 import com.employee_service.service.EmployeeService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
@@ -63,7 +64,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     public ApiResponseDto getDefaultDepartment(Long id,Exception exception) {
         LOGGER.info("inside getDefaultDepartment method");
-        Employee employee=employeeRepository.findById(id).orElseThrow(()->new RuntimeException("no record found"));
+        Employee employee=employeeRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("no record found"));
         DepartmentDto departmentDto=new DepartmentDto();
         departmentDto.setDepartmentName("R&D Department");
         departmentDto.setDepartmentCode("RD001");
